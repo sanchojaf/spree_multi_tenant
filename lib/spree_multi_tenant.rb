@@ -29,7 +29,7 @@ module SpreeMultiTenant
       Spree::Property,
       Spree::Prototype,
       Spree::ReturnAuthorization,
-      Spree::Role,
+      # Spree::Role,
       Spree::Shipment,
       Spree::ShippingCategory,
       Spree::ShippingMethod,
@@ -42,9 +42,9 @@ module SpreeMultiTenant
       Spree::TaxRate,
       Spree::Taxonomy,
       Spree::Taxon,
-      Spree::TokenizedPermission,
+      # Spree::TokenizedPermission,
       Spree::Tracker,
-      Spree::User,
+      # Spree::User,
       Spree::Variant,
       Spree::ZoneMember,
       Spree::Zone,
@@ -69,7 +69,7 @@ module SpreeMultiTenant
       Spree::Promotion::Rules::ItemTotal,
       Spree::Promotion::Rules::Product,
       Spree::Promotion::Rules::User,
-      Spree::Promotion::Rules::UserLoggedIn,
+      Spree::Promotion::Rules::UserLoggedIn
     ]
   end
 
@@ -82,12 +82,10 @@ module SpreeMultiTenant
     ]
   end
 
-  def self.with_tenant(tenant, &block)
+  def self.with_tenant(tenant, &_block)
     Multitenant.with_tenant tenant do
       SpreeMultiTenant.init_preferences
       yield
     end
   end
-
 end
-

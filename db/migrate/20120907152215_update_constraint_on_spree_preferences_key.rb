@@ -8,4 +8,3 @@ class UpdateConstraintOnSpreePreferencesKey < ActiveRecord::Migration
     add_index :spree_preferences, :key, :unique => true
   end
 end
-

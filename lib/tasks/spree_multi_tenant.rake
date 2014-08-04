@@ -1,4 +1,3 @@
-
 def do_create_tenant domain, code
   if domain.blank? or code.blank?
     puts "Error: domain and code must be specified"
