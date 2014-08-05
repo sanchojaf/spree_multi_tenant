@@ -4,6 +4,10 @@ Spree::Store.class_eval do
   after_create :setup_schema
   after_create :create_template_and_assets_paths, if: ->(_r) { Rails.env.development? }
 
+  def schema_name
+    code
+  end
+
   def templates_base_path
     File.join(Rails.root, 'app', 'stores', code)
   end

@@ -1,33 +1,15 @@
-def do_create_tenant domain, code
-  if domain.blank? or code.blank?
-    puts "Error: domain and code must be specified"
-    puts "(e.g. rake spree_multi_tenant:create_tenant domain=mydomain.com code=mydomain)"
-    exit
-  end
-
-  tenant = Spree::Tenant.create!({:domain => domain.dup, :code => code.dup})
-  tenant.create_template_and_assets_paths
-  tenant
-end
-
-
-namespace :spree_multi_tenant do
-
-  desc "Create a new tenant and assign all exisiting items to the tenant."
-  task :create_tenant_and_assign => :environment do
-    tenant = do_create_tenant ENV["domain"], ENV["code"]
-
-    # Assign all existing items to the new tenant
-    SpreeMultiTenant.tenanted_models.each do |model|
-      model.all.each do |item|
-        item.update_attribute(:tenant_id, tenant.id)
+# Multitenant migrations.
+namespace :stores do
+  namespace :db do
+    desc "runs db:migrate on each tenant's private schema"
+    task migrate: :environment do
+      verbose = ENV['VERBOSE'] ? ENV['VERBOSE'] == 'true' : true
+      ActiveRecord::Migration.verbose = verbose
+      Spree::Store.all.each do |tenant|
+        puts "Migrating tenant #{tenant.id} (#{tenant.url})"
+        version = ENV['VERSION'] ? ENV['VERSION'].to_i : nil
+        Multitenant::SchemaUtils.migrate_schema(tenant.code, version)
       end
     end
   end
-
-  desc "Create a new tenant"
-  task :create_tenant => :environment do
-    tenant = do_create_tenant ENV["domain"], ENV["code"]
-  end
-
 end
