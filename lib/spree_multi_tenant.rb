@@ -83,7 +83,7 @@ module SpreeMultiTenant
   end
 
   def self.with_tenant(tenant, &_block)
-    Multitenant.with_tenant tenant do
+    Multitenant.with_tenant(tenant) do
       SpreeMultiTenant.init_preferences
       yield
     end
