@@ -1,5 +1,5 @@
 Spree::Store.class_eval do
-  set_table_name 'public.spree_stores'
+  self.table_name = 'public.spree_stores'
 
   after_create :setup_schema
   after_create :create_template_and_assets_paths, if: ->(_r) { Rails.env.development? }
