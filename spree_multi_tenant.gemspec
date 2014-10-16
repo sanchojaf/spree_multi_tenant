@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_multi_tenant'
-  s.version     = '0.4.0'
+  s.version     = '0.4.4'
   s.summary     = 'Adds multi-tenant support to Spree'
   s.description = 'Allows completely separate Spree sites to be run from the same installation'
   s.required_ruby_version     = '>= 1.9.3'

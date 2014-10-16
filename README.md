@@ -12,9 +12,9 @@ Install
 Gemfile:
 
 ```ruby
-gem 'spree', github: 'spree/spree', branch: '2-3-stable'
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-3-stable'
-gem 'spree_multi_tenant', github: 'masterkain/spree_multi_tenant', branch: '2-3-stable'
+gem 'spree', github: 'spree/spree', branch: '2-4-stable'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
+gem 'spree_multi_tenant', github: 'KosenkoDmitriy/spree_multi_tenant', branch: '2-4-stable'
 ```
 
 ```shell
@@ -35,7 +35,7 @@ Creating the first tenant
 Create the first tenant and assign all existing items to it:
 
 ```shell
-bundle exec rake spree_multi_tenant:create_tenant_and_assign domain=mydomain.com code=mydomain
+bundle exec rake spree_multi_tenant:create_tenant_and_assign name=mydomain code=mydomain.ru url=mydomain.ru mail_from_address=mydomain@mydomain.ru default_currency=RUB
 
 ```
 
@@ -54,13 +54,14 @@ Creating more tenants
 Create another tenant (without anything assigned):
 
 ```shell
-bundle exec rake spree_multi_tenant:create_tenant domain=anotherdomain.com code=anotherdomain
+bundle exec rake spree_multi_tenant:create_tenant_and_assign name=anotherdomain code=anotherdomain.ru url=anotherdomain.ru mail_from_address=anotherdomain@anotherdomain.ru default_currency=RUB
+
 ```
 
 Or from the console:
 
 ```ruby
-Spree::Store.create({domain: "anotherdomain.com", code: "anotherdomain"})
+Spree::Store.create!({:url => "anotherdomain.ru", code:"anotherdomain.ru", name:"anotherdomain", mail_from_address:"anotherdomain@anotherdomain.ru", default_currency:"RUB"})
 ```
 
 
@@ -97,7 +98,7 @@ models = [
 ]
 models.each do |model|
   model.class_eval do
-    belongs_to :tenant
+    belongs_to :store
     belongs_to_multitenant
   end
 end
