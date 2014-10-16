@@ -14,7 +14,7 @@ class AddTenantToModels < ActiveRecord::Migration
       'spree_log_entries',
       'spree_option_types',
       'spree_option_values',
-      'spree_orders',
+      #'spree_orders', #because SQLite3::SQLException: duplicate column name: store_id: ALTER TABLE "spree_orders"
       'spree_payment_capture_events',
       'spree_payment_methods',
       'spree_payments',
