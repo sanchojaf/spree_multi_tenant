@@ -12,9 +12,9 @@ Install
 Gemfile:
 
 ```ruby
-gem 'spree', github: 'spree/spree', branch: '2-4-stable'
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
-gem 'spree_multi_tenant', github: 'KosenkoDmitriy/spree_multi_tenant', branch: '2-4-stable'
+gem 'spree', github: 'spree/spree', branch: '3-0-stable'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
+gem 'spree_multi_tenant', github: 'KosenkoDmitriy/spree_multi_tenant', branch: '3-0-stable'
 ```
 
 ```shell
