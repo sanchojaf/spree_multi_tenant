@@ -44,19 +44,19 @@ module SpreeMultiTenant
       Spree::Taxon,
       #Spree::TokenizedPermission,
       Spree::Tracker,
-      Spree::User,
+      # Spree::User,
       Spree::Variant,
       Spree::ZoneMember,
       Spree::Zone,
 
-      # Spree::OptionTypesPrototype,
-      # Spree::OptionValuesVariant,
-      # Spree::PendingPromotion,
-      # Spree::ProductScope,
-      # Spree::ProductsPromotionRule,
-      # Spree::ProductsTaxon,
-      # Spree::PromotionRulesUser,
-      # Spree::PropertiesPrototype,
+      #Spree::OptionTypesPrototype,
+      #Spree::OptionValuesVariant,
+      #Spree::PendingPromotion,
+      #Spree::ProductScope,
+      #Spree::ProductsPromotionRule,
+      #Spree::ProductsTaxon,
+      #Spree::PromotionRulesUser,
+      #Spree::PropertiesPrototype,
       # Spree::RolesUser,
 
       Spree::Promotion,
@@ -76,9 +76,9 @@ module SpreeMultiTenant
   def self.tenanted_controllers
     [
       Spree::BaseController,
-      Spree::UserPasswordsController,
-      Spree::UserSessionsController,
-      Spree::UserRegistrationsController
+#      Spree::UserPasswordsController,
+#      Spree::UserSessionsController,
+#      Spree::UserRegistrationsController
     ]
   end
 
